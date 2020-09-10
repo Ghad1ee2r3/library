@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from libraryapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('books/list/',views.book_list ,name='book-list'),
+    #path('books/list/',views.book_list ,name='send-email'),
+    path('books/list/',views.search_list ,name='search-list'),
+    path('books/<int:book_id>/detail/',views.book_detail ,name='list-detail'),
+    path('books/<int:book_id>/membership/create/',views.log_create ,name='membership-create'),
+    path('books/create/', views.book_create, name='book-create'),
+    path('books/<int:book_id>/update/', views.book_update, name='book-update'),
+    path('notallow', views.notallow, name='notallow'),
+    path('profile', views.profile, name='profile-user'),
+
+    path('signin/',views.signin ,name='signin'),
+    path('signout/',views.signout ,name='signout'),
+    path('signup/',views.signup ,name='signup'),
+    path('books/createmember/',views.membership_create,name='membership-create')
 ]

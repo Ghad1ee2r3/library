@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}profile {% endblock title %}
+
+{% block content %}
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card my-card">
+
+
+          <div class="card-body">
+            <h5 class="card-title">{{request.user.username}}</h5>
+            <p class="card-text"></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">
+
+            </li>
+          </ul>
+        </div>
+    </div>
+    <div class="card col-6" >currently reserved books:
+      <table style="width:100%">
+        <tr>
+          <th>namebook</th>
+          <th>user</th>
+          <th>date return</th>
+
+        </tr>
+
+            <tr>
+            <td>{{current.namebook}}</td>
+            <td>{{current.user}}</td>
+            <td>{{current.datereturn}}</td>
+
+
+            </tr>
+
+
+
+      </table>
+
+    </div>
+<div class="card col-6" >book history
+
+<table style="width:100%">
+  <tr>
+    <th>namebook</th>
+    <th>user</th>
+    <th>date return</th>
+
+  </tr>
+{% for membership in memberships %}
+      <tr>
+      <td>{{membership.namebook}}</td>
+      <td>{{membership.user}}</td>
+      <td>{{membership.datereturn}}</td>
+
+
+      </tr>
+
+{% endfor %}
+
+</table>
+</div>
+{% endblock content %}

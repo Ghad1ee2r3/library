@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'libraryapp',
+    'crispy_forms',
+
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,5 +120,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#@djangoapp.com
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+#os.environ.get('MAIL_USERNAME',     'user@gmail.com')
+#MAIL_USERNAME='ghadeer'
+EMAIL_HOST_USER = 'apps02977@gmail.com'
+EMAIL_HOST_PASSWORD = '1234'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 STATIC_URL = '/static/'

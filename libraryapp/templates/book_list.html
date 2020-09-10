@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="search-container">
+<form action="{% url 'search-list'   %}">
+  <input type="text" placeholder="Search.." name="search_query">
+  <a href="{% url 'search-list' %}" class="btn" style="background-color: #e3f2fd; color: black;">Search</a>
+</form>
+</div>
+
+<div class="row">
+  {% if request.user.username == "ghadeer"  %}
+	{% for book in Bookss %}
+<div class="col-sm-4">
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Name: {{book.name}}</h5>
+			<p class="card-text">author: {{book.author}}</p>
+			<p class="card-text">isbn: {{book.isbn}}</p>
+			<p class="card-text">genre: {{book.genre}}</p>
+      <p class="card-text">year: {{book.yearRelease}}</p>
+			<a href="{{book.get_absolute_url}}" class="btn" style="background-color: #e3f2fd; color: black;">View</a>
+		</div>
+	</div>
+</div>
+	{% endfor %}
+{% else %}
+  {% for book in Books %}
+<div class="col-sm-4">
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Name: {{book.name}}</h5>
+			<p class="card-text">author: {{book.author}}</p>
+			<p class="card-text">isbn: {{book.isbn}}</p>
+			<p class="card-text">genre: {{book.genre}}</p>
+      <p class="card-text">year: {{book.yearRelease}}</p>
+			<a href="{{book.get_absolute_url}}" class="btn" style="background-color: #e3f2fd; color: black;">View</a>
+		</div>
+	</div>
+</div>
+	{% endfor %}
+    {% endif %}
+</div>
+
+
+{% endblock content %}

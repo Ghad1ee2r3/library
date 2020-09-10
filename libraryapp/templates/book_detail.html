@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Detail{% endblock title %}
+
+{% block content %}
+
+<br>
+<div class="card">
+  <h5 class="card-header">book Info</h5>
+
+  <div class="card-body">
+    <h5 class="card-title">{{book.name}}</h5>
+    <p class="card-text">{{book.author|linebreaks}}</p>
+    <p class="card-text">year Release: {{book.yearRelease}}</p>
+    <p class="card-text">Genre: {{book.genre}}</p>
+  </div>
+
+
+  <div class="card-body">
+    <div class="row text-center">
+
+          {%  if request.user.is_staff %}
+
+        <div class="col-md-4">
+            <a href="{% url 'book-update' book.id %}" class="btn btn-outline-primary btn-block">Update</a>
+        </div>
+        </div>
+        <div>
+          <hr>
+<h4>log</h4>
+        <table style="width:100%">
+          <tr>
+            <th>namebook</th>
+            <th>user</th>
+            <th>date return</th>
+
+          </tr>
+        {% for membership in memberships %}
+              <tr>
+              <td>{{membership.namebook}}</td>
+              <td>{{membership.user}}</td>
+              <td>{{membership.datereturn}}</td>
+
+
+              </tr>
+
+        {% endfor %}
+
+        </table>
+      </div>
+          {% endif %}
+            {%  if request.user  == request.user.is_staff  %}
+            <div class="col-md-4">
+                <a href="" class="btn btn-outline-primary btn-block">Update</a>
+            </div>
+
+          {% endif %}
+    </div>
+  </div>
+  </div>
+
+
+{% endblock content %}
